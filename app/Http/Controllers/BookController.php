@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 7999b079144a0a1372c4a01dc22339310768936e
     public function index(Request $request)
     {
         $query = Book::query();
