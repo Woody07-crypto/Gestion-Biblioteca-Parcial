@@ -8,14 +8,7 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    /**
-     * GET /api/books
-     *
-     * Filtros:
-     * - ?titulo=...
-     * - ?isbn=...
-     * - ?status=true|false|1|0
-     */
+   
     public function index(Request $request)
     {
         $query = Book::query();

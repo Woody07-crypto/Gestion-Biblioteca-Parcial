@@ -11,7 +11,6 @@ class BookLoanRequestController extends Controller
     public function store(StoreLoanRequest $request)
     {
         $loan = DB::transaction(function () use ($request) {
-            // Bloqueamos el libro para evitar condiciones de carrera
             $book = DB::table('books')
                 ->lockForUpdate()
                 ->find($request->book_id);
@@ -20,7 +19,6 @@ class BookLoanRequestController extends Controller
                 abort(422, 'No hay existencias de este libro.');
             }
 
-            // Crear el préstamo
             $loan = Loan::create([
                 'user_id'        => $request->user_id,
                 'book_id'        => $request->book_id,
@@ -28,7 +26,6 @@ class BookLoanRequestController extends Controller
                 'estado'         => 'prestado',
             ]);
 
-            // Actualizar copias disponibles y estado del libro
             $nuevasCopias = $book->Copias_disponibles - 1;
 
             DB::table('books')
