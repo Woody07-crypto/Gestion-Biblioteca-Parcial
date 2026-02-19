@@ -3,19 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLoanRequest;
-use App\Http\Resources\LoanResource;
 use App\Models\Loan;
 use Illuminate\Support\Facades\DB;
 
 class BookLoanRequestController extends Controller
 {
-    public function index()
-    {
-        $loans = Loan::with('book')->get();
-
-        return LoanResource::collection($loans);
-    }
-
     public function store(StoreLoanRequest $request)
     {
         $loan = DB::transaction(function () use ($request) {
