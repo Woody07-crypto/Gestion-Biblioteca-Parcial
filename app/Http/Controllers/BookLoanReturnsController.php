@@ -17,21 +17,18 @@ class BookLoanReturnsController extends Controller
             return response()->json(['message' => 'Préstamo no encontrado.'], 404);
         }
 
-        // Ya devuelto
-        if ($loan->fecha_devolucion !== null || $loan->estado === 'devuelto') {
+         if ($loan->fecha_devolucion !== null || $loan->estado === 'devuelto') {
             return response()->json([
                 'message' => 'Este préstamo ya fue devuelto.',
             ], 422);
         }
 
         $loan = DB::transaction(function () use ($loan) {
-            // Actualizar préstamo
-            $loan->fecha_devolucion = now();
+             $loan->fecha_devolucion = now();
             $loan->estado = 'devuelto';
             $loan->save();
 
-            // Actualizar libro
-            $book = DB::table('books')
+             $book = DB::table('books')
                 ->lockForUpdate()
                 ->find($loan->book_id);
 
