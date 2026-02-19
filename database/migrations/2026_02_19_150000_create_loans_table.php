@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
             $table->timestamp('fecha_prestamo')->useCurrent();
             $table->timestamp('fecha_devolucion')->nullable();
-            $table->string('estado')->default('prestado'); // prestado, devuelto, cancelado, etc.
+            $table->string('estado')->default('prestado'); 
             $table->timestamps();
         });
     }
