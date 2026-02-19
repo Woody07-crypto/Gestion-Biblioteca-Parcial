@@ -19,5 +19,10 @@ class Book extends Model
         'Copias_disponibles',
         'Estado',
     ];
+
+    public function loans()
+    {
+        return $this->hasMany(Loan::class, 'book_id');
+    }
 }
 
