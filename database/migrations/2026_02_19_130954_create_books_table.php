@@ -6,12 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    
     public function up(): void
     {
-        // En este proyecto de práctica aseguramos que no exista la tabla antes de crearla
+    
         Schema::dropIfExists('books');
 
         Schema::create('books', function (Blueprint $table) {
@@ -26,9 +24,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('books');

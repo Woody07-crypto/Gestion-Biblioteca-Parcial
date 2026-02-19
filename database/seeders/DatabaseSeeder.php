@@ -11,12 +11,10 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
+     
     public function run(): void
     {
-        // Seed example user
+         
         User::factory()->create();
 
         
@@ -137,9 +135,7 @@ class DatabaseSeeder extends Seeder
         ];
     }
 
-    /**
-     * Generate additional random books.
-     */
+    
     private function generateMoreBooks(int $count): array
     {
         $faker = \Faker\Factory::create('es_ES');
